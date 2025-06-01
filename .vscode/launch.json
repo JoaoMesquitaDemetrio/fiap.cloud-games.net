@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (web)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/UI/Fiap.Cloud.Games.UI.Api/bin/Debug/net8.0/Fiap.Cloud.Games.UI.Api.dll",
+            "args": [
+                "--urls",
+                "http://localhost:6171",
+                "-v",
+                "m"
+            ],
+            "cwd": "${workspaceFolder}/src/UI/Fiap.Cloud.Games.UI.Api",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/swagger/index.html"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        }
+    ]
+}

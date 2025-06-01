@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <ProjectReference Include="..\Fiap.Cloud.Games.Core.Domain\Fiap.Cloud.Games.Core.Domain.csproj" />
+        <ProjectReference Include="..\..\..\utility\Sample.Utils\Sample.Utils.csproj" />
+
+    </ItemGroup>
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+        <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
+        <ServerGarbageCollection>true</ServerGarbageCollection>
+        <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+        <UseSharedCompilation>false</UseSharedCompilation>
+    </PropertyGroup>
+
+</Project>
