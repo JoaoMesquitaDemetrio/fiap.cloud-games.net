@@ -17,6 +17,7 @@ builder.Services.AddControllers(options =>
 {
     options.AllowEmptyInputInBodyModelBinding = true;
     options.SetupGlobalRoutePrefix(new RouteAttribute("api"));
+    options.Filters.Add(typeof(HttpInterceptionCorrelation));
     options.Filters.Add(typeof(ValidateModelStateAttribute));
 })
 .AddNewtonsoftJson(options => options.SerializerSettings.SetDefaultJsonSerializerSettings());
@@ -29,7 +30,6 @@ builder.Services.AddValidatorsFromAssemblyContaining<Identifier>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddRazorPages();
 builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
-
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -45,6 +45,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.SetupExceptionHandler();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseRouting();
