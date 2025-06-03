@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Fiap.Cloud.Games.Core.Application.DataTransferObjects;
 using Fiap.Cloud.Games.Core.Application.DataTransferObjects.HttpResponse;
 using Fiap.Cloud.Games.Core.Application.Interfaces;
+using Fiap.Cloud.Games.Core.Domain.Extensions;
 
 namespace Fiap.Cloud.Games.UI.Api.Controllers;
 
@@ -33,7 +34,7 @@ public class PlayerController(IPlayerApplicationService playerApplicationService
     /// <param name="model">Dados do player <see cref="PlayerInsert"</param>
     /// <returns>ok <see cref="StatusCodes"/></returns>
     [HttpPost, Route("administrator")]
-    [AllowAnonymous]
+    [Authorize(Policy = AppConstants.Policies.ADMINISTRATOR)]
     [ProducesResponseType(typeof(StatusCodes), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ExceptionResult), StatusCodes.Status400BadRequest)]
     [ProducesErrorResponseType(typeof(ExceptionResult))]

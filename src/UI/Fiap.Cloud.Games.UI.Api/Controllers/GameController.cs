@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Fiap.Cloud.Games.Core.Application.DataTransferObjects;
 using Fiap.Cloud.Games.Core.Application.DataTransferObjects.HttpResponse;
 using Fiap.Cloud.Games.Core.Application.Interfaces;
+using Fiap.Cloud.Games.Core.Domain.Extensions;
 
 namespace Fiap.Cloud.Games.UI.Api.Controllers;
 
@@ -17,7 +18,7 @@ public class GameController(IGameApplicationService gameApplicationService) : Ba
     /// <param name="model">Dados do game <see cref="GameInsert"</param>
     /// <returns>Dados do game persistido <see cref="GameUpdate"/></returns>
     [HttpPost]
-    [AllowAnonymous]
+    [Authorize(Policy = AppConstants.Policies.ADMINISTRATOR)]
     [ProducesResponseType(typeof(StatusCodes), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ExceptionResult), StatusCodes.Status400BadRequest)]
     [ProducesErrorResponseType(typeof(ExceptionResult))]
@@ -33,7 +34,7 @@ public class GameController(IGameApplicationService gameApplicationService) : Ba
     /// <param name="model">Dados do game <see cref="GameUpdate"</param>
     /// <returns>Dados do game persistido <see cref="GameUpdate"/></returns>
     [HttpPut]
-    [AllowAnonymous]
+    [Authorize(Policy = AppConstants.Policies.ADMINISTRATOR)]
     [ProducesResponseType(typeof(StatusCodes), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ExceptionResult), StatusCodes.Status400BadRequest)]
     [ProducesErrorResponseType(typeof(ExceptionResult))]

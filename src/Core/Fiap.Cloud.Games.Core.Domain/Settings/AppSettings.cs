@@ -6,11 +6,10 @@ namespace Fiap.Cloud.Games.Core.Domain.Settings;
 public class AppSettings
 {
     public ConnectionStringsSettings ConnectionStrings { get; set; } 
+    public JWTSettings Jwt { get; set; }
 
     public AppSettings() { }
 }
-
-
 
 public static class AppSettingsExtensions
 {
