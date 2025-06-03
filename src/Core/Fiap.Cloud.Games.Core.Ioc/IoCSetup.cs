@@ -1,6 +1,8 @@
 using System.Reflection;
 using Fiap.Cloud.Games.Core.Infra.Middlewares;
+using Fiap.Cloud.Games.Core.Infra.Repositories.EF;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Sample.Utils.Extensions;
 using APP = Fiap.Cloud.Games.Core.Application.DataTransferObjects;
 using DOM = Fiap.Cloud.Games.Core.Domain.Entities;
@@ -25,6 +27,8 @@ public static class IoCSetup
 
         services.SetupHandlerException();
         services.SetupBaseLogger();
+        services.SetupApplicationDBContext();
+        services.AddLogging(opt => opt.AddSimpleConsole(c => c.TimestampFormat = "[HH:mm:ss] "));
     }
 
     internal static void ApplyToFrameworkServices(this IServiceCollection services)

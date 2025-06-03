@@ -3,7 +3,10 @@
     <ItemGroup>
         <ProjectReference Include="..\Fiap.Cloud.Games.Core.Domain\Fiap.Cloud.Games.Core.Domain.csproj" />
         <ProjectReference Include="..\..\..\utility\Sample.Utils\Sample.Utils.csproj" />
+    </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="FluentValidation" Version="11.9.1" />
     </ItemGroup>
 
     <PropertyGroup>

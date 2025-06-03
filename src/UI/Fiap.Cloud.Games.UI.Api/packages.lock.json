@@ -128,8 +128,8 @@
       },
       "FluentValidation": {
         "type": "Transitive",
-        "resolved": "11.5.1",
-        "contentHash": "0h1Q5lNOLLyYTWMJmyNoMqhY4CBRvvUWvJP1R4F2CnmmzuWwvB0A8aVmw5+lOuwYnwUwCRrdeMLbc81F38ahNQ=="
+        "resolved": "11.9.1",
+        "contentHash": "C+PqISSMdlOZZJx0Hx25atW32tv4vbpsaiQB+PLjK+ZGLzOFuHl1fUJ3Lny77mIZ31ZtYtNG0JgUjxa3wwLsWg=="
       },
       "FluentValidation.DependencyInjectionExtensions": {
         "type": "Transitive",
@@ -1248,12 +1248,15 @@
         "type": "Project",
         "dependencies": {
           "Fiap.Cloud.Games.Core.Domain": "[1.0.0, )",
+          "FluentValidation": "[11.9.1, )",
           "Sample.Utils": "[1.0.0, )"
         }
       },
       "fiap.cloud.games.core.domain": {
         "type": "Project",
         "dependencies": {
+          "FluentValidation": "[11.9.1, )",
+          "Microsoft.EntityFrameworkCore": "[8.0.16, )",
           "Microsoft.Extensions.DependencyInjection": "[8.0.1, )",
           "Sample.Utils": "[1.0.0, )"
         }

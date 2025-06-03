@@ -9,4 +9,12 @@ public class Game : Identifier
     public int AgeRating { get; set; }
 
     public Game() : base() { }
+
+    public Game(string name, string studio, decimal price, int ageRating) : this()
+    {
+        Name = name;
+        Studio = studio;
+        Price = price;
+        AgeRating = ageRating;
+    }
 }

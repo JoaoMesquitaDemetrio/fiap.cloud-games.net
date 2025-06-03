@@ -1,4 +1,5 @@
 using System.Reflection;
+using Fiap.Cloud.Games.Core.Domain.Interfaces.Infra.Repository;
 using Fiap.Cloud.Games.Core.Domain.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -8,7 +9,7 @@ using Microsoft.Extensions.Options;
 
 namespace Fiap.Cloud.Games.Core.Infra.Repositories.EF;
 
-public class ApplicationDBContext : DbContext
+public class ApplicationDBContext : DbContext, IApplicationDBContext
 {
     private readonly AppSettings _settings;
     private readonly ILoggerFactory _loggerFactory;
@@ -55,4 +56,7 @@ public static class ApplicationDBContextExtensions
             .AddDbContext<ApplicationDBContext>()
             .BuildServiceProvider();
     }
+
+    public static void SetupApplicationDBContext(this IServiceCollection services)
+        => services.AddScoped<IApplicationDBContext>(provider => provider.GetService<ApplicationDBContext>());
 }

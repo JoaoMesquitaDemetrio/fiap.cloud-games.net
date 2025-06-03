@@ -132,6 +132,11 @@
           "System.Diagnostics.EventLog": "6.0.0"
         }
       },
+      "FluentValidation": {
+        "type": "Transitive",
+        "resolved": "11.9.1",
+        "contentHash": "C+PqISSMdlOZZJx0Hx25atW32tv4vbpsaiQB+PLjK+ZGLzOFuHl1fUJ3Lny77mIZ31ZtYtNG0JgUjxa3wwLsWg=="
+      },
       "Microsoft.AspNetCore.Antiforgery": {
         "type": "Transitive",
         "resolved": "2.3.0",
@@ -1930,6 +1935,8 @@
       "fiap.cloud.games.core.domain": {
         "type": "Project",
         "dependencies": {
+          "FluentValidation": "[11.9.1, )",
+          "Microsoft.EntityFrameworkCore": "[8.0.16, )",
           "Microsoft.Extensions.DependencyInjection": "[8.0.1, )",
           "Sample.Utils": "[1.0.0, )"
         }

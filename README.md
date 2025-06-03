@@ -62,7 +62,7 @@ $ dotnet ef --startup-project ../../UI/Fiap.Cloud.Games.UI.Api migrations add mi
 ### Como atualizar o banco de dados com as migrations criadas
 ```
 $ cd src/Core/Fiap.Cloud.Games.Core.Infra
-$ dotnet ef --startup-project ../../UI/Fiap.Cloud.Games.UI.Api database update --output-dir Repositories/EF/Migrations --verbose
+$ dotnet ef --startup-project ../../UI/Fiap.Cloud.Games.UI.Api database update --verbose
 ```
 
 ## Definindo infraestrutura para execução do projeto

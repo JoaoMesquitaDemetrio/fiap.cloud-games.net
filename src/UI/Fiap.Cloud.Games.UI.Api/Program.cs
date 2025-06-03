@@ -5,11 +5,11 @@ using Fiap.Cloud.Games.Core.Ioc;
 using Fiap.Cloud.Games.Core.Domain.Settings;
 using Fiap.Cloud.Games.UI.Api.Extensions;
 using Fiap.Cloud.Games.UI.Api.Components;
-using Fiap.Cloud.Games.Core.Domain.Entities;
 using Sample.Utils.Extensions;
 using Fiap.Cloud.Games.Core.Infra.Filters;
 using Fiap.Cloud.Games.Core.Infra.Middlewares;
 using Fiap.Cloud.Games.Core.Infra.Repositories.EF;
+using Fiap.Cloud.Games.Core.Application.Validations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +29,7 @@ builder.Services.AddControllers(options =>
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 builder.Services.AddFluentValidationAutoValidation(options => options.DisableDataAnnotationsValidation = true);
 builder.Services.AddFluentValidationClientsideAdapters();
-builder.Services.AddValidatorsFromAssemblyContaining<Identifier>();
+builder.Services.AddValidatorsFromAssemblyContaining<PlayerInsertValidation>();
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddRazorPages();
