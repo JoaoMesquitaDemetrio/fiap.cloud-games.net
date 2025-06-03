@@ -35,7 +35,7 @@ public class ApplicationDBContext : DbContext
         optionsBuilder.UseLazyLoadingProxies(false);
         optionsBuilder.UseSqlServer(_settings.ConnectionStrings.DatabaseConnection, x =>
         {
-            x.MigrationsAssembly("Fiap.Cloud.Games.Core.Infra.Repositories.EF");
+            x.MigrationsAssembly("Fiap.Cloud.Games.Core.Infra");
             x.EnableRetryOnFailure();
         });
         optionsBuilder.UseLoggerFactory(_loggerFactory);
