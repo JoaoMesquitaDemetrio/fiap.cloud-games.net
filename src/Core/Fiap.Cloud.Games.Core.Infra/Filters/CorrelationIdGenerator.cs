@@ -4,7 +4,7 @@ namespace Fiap.Cloud.Games.Core.Infra.Filters;
 
 public class CorrelationIdGenerator : ICorrelationIdGenerator
 {
-    private string _correlationId;
+    private static string _correlationId;
 
     public string Get() => _correlationId;
 

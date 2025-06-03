@@ -21,7 +21,6 @@ builder.Services.AddControllers(options =>
 {
     options.AllowEmptyInputInBodyModelBinding = true;
     options.SetupGlobalRoutePrefix(new RouteAttribute("api"));
-    options.Filters.AddHttpInterceptionCorrelation();
     options.Filters.AddValidateModelState();
 })
 .AddNewtonsoftJson(options => options.SerializerSettings.SetDefaultJsonSerializerSettings());
@@ -47,6 +46,7 @@ app.UseSwagger();
 app.UseSwaggerUI(c => c.RoutePrefix = "swagger");
 
 app.UseCustomExceptionHandler();
+app.UseInterceptionCorrelation();
 app.UseMessageLogger();
 app.UseHttpsRedirection();
 app.UseAuthorization();

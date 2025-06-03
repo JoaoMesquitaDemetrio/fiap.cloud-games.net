@@ -1,26 +1,27 @@
 using Fiap.Cloud.Games.Core.Domain.Interfaces.Infra.Filters;
-using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace Fiap.Cloud.Games.Core.Infra.Filters;
 
-public class HttpInterceptionCorrelation : IAsyncActionFilter
+public class HttpInterceptionCorrelation
 {
-    private readonly ICorrelationIdGenerator _correlationIdGenerator;
+    private readonly RequestDelegate _next;
 
-    public HttpInterceptionCorrelation(ICorrelationIdGenerator correlationIdGenerator)
-        => _correlationIdGenerator = correlationIdGenerator;
+    public HttpInterceptionCorrelation(RequestDelegate next)
+        => _next = next;
 
-    public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+    public async Task Invoke(HttpContext context, ICorrelationIdGenerator correlationIdGenerator)
     {
-        _correlationIdGenerator.Set(Guid.NewGuid().ToString());
-        context.HttpContext.TraceIdentifier = _correlationIdGenerator.Get();
+        correlationIdGenerator.Set(Guid.NewGuid().ToString());
+        context.TraceIdentifier = correlationIdGenerator.Get();
 
-        await next();
+        await _next(context);
     }
 }
 
 public static class HttpInterceptionCorrelationExtensions
 {
-    public static void AddHttpInterceptionCorrelation(this FilterCollection filters)
-        => filters.Add(typeof(HttpInterceptionCorrelation));
+    public static IApplicationBuilder UseInterceptionCorrelation(this IApplicationBuilder app)
+        => app.UseMiddleware<HttpInterceptionCorrelation>();
 }
