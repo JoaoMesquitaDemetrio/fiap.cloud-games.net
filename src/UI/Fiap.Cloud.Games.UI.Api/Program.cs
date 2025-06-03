@@ -7,6 +7,8 @@ using Fiap.Cloud.Games.UI.Api.Extensions;
 using Fiap.Cloud.Games.UI.Api.Components;
 using Fiap.Cloud.Games.Core.Domain.Entities;
 using Sample.Utils.Extensions;
+using Fiap.Cloud.Games.Core.Infra.Filters;
+using Fiap.Cloud.Games.Core.Infra.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +19,8 @@ builder.Services.AddControllers(options =>
 {
     options.AllowEmptyInputInBodyModelBinding = true;
     options.SetupGlobalRoutePrefix(new RouteAttribute("api"));
-    options.Filters.Add(typeof(HttpInterceptionCorrelation));
-    options.Filters.Add(typeof(ValidateModelStateAttribute));
+    options.Filters.AddHttpInterceptionCorrelation();
+    options.Filters.AddValidateModelState();
 })
 .AddNewtonsoftJson(options => options.SerializerSettings.SetDefaultJsonSerializerSettings());
 
@@ -45,7 +47,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.SetupExceptionHandler();
+app.UseCustomExceptionHandler();
+app.UseMessageLogger();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseRouting();

@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Fiap.Cloud.Games.UI.Api.Components;
+namespace Fiap.Cloud.Games.Core.Infra.Filters;
 
 public class ValidateModelStateAttribute : ActionFilterAttribute
 {
@@ -35,4 +35,10 @@ public class ValidateModelStateAttribute : ActionFilterAttribute
             throw new Exception("Erro não esperado");
         }
     }
+}
+
+public static class ValidateModelStateAttributeExtensions
+{
+    public static void AddValidateModelState(this FilterCollection filters)
+        => filters.Add(typeof(ValidateModelStateAttribute));
 }
