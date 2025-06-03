@@ -3,9 +3,14 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Fiap.Cloud.Games.Core.Domain.Settings;
 
-public record AppSettings(
-    ConnectionStringsSettings ConnectionStrings
-);
+public class AppSettings
+{
+    public ConnectionStringsSettings ConnectionStrings { get; set; } 
+
+    public AppSettings() { }
+}
+
+
 
 public static class AppSettingsExtensions
 {

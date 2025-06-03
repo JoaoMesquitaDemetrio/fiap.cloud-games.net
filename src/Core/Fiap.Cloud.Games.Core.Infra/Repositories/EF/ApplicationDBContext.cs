@@ -3,6 +3,7 @@ using Fiap.Cloud.Games.Core.Domain.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace Fiap.Cloud.Games.Core.Infra.Repositories.EF;
@@ -10,10 +11,12 @@ namespace Fiap.Cloud.Games.Core.Infra.Repositories.EF;
 public class ApplicationDBContext : DbContext
 {
     private readonly AppSettings _settings;
+    private readonly ILoggerFactory _loggerFactory;
 
-    public ApplicationDBContext(IOptionsSnapshot<AppSettings> options)
+    public ApplicationDBContext(IOptionsSnapshot<AppSettings> options, ILoggerFactory loggerFactory)
     {
         _settings = options.Value;
+        _loggerFactory = loggerFactory;
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,9 +38,12 @@ public class ApplicationDBContext : DbContext
             x.MigrationsAssembly("Fiap.Cloud.Games.Core.Infra.Repositories.EF");
             x.EnableRetryOnFailure();
         });
+        optionsBuilder.UseLoggerFactory(_loggerFactory);
 
+        /*
         optionsBuilder.UseInMemoryDatabase(Guid.NewGuid().ToString())
             .ConfigureWarnings(opt => opt.Ignore(InMemoryEventId.TransactionIgnoredWarning));
+        */
     }
 }
 

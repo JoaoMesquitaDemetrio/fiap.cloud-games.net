@@ -9,12 +9,14 @@ using Fiap.Cloud.Games.Core.Domain.Entities;
 using Sample.Utils.Extensions;
 using Fiap.Cloud.Games.Core.Infra.Filters;
 using Fiap.Cloud.Games.Core.Infra.Middlewares;
+using Fiap.Cloud.Games.Core.Infra.Repositories.EF;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.SetupSettings(builder.Configuration);
 builder.Services.SetupIoC();
+builder.Services.SetupSQLDatabase();
 builder.Services.AddControllers(options =>
 {
     options.AllowEmptyInputInBodyModelBinding = true;
