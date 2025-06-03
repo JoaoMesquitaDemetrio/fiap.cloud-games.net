@@ -49,8 +49,9 @@ app.UseCustomExceptionHandler();
 app.UseInterceptionCorrelation();
 app.UseMessageLogger();
 app.UseHttpsRedirection();
-app.UseAuthorization();
 app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 app.UseCors();
 
 app.MapControllers();
