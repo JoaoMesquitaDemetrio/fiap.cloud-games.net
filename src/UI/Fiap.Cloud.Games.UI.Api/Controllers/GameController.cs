@@ -32,7 +32,7 @@ public class GameController(IGameApplicationService gameApplicationService) : Ba
     /// </summary>
     /// <param name="model">Dados do game <see cref="GameUpdate"</param>
     /// <returns>Dados do game persistido <see cref="GameUpdate"/></returns>
-    [HttpPost]
+    [HttpPut]
     [AllowAnonymous]
     [ProducesResponseType(typeof(StatusCodes), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ExceptionResult), StatusCodes.Status400BadRequest)]

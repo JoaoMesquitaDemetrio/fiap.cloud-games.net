@@ -5,11 +5,11 @@ using Fiap.Cloud.Games.Core.Ioc;
 using Fiap.Cloud.Games.Core.Domain.Settings;
 using Fiap.Cloud.Games.UI.Api.Extensions;
 using Fiap.Cloud.Games.UI.Api.Components;
-using Sample.Utils.Extensions;
 using Fiap.Cloud.Games.Core.Infra.Filters;
 using Fiap.Cloud.Games.Core.Infra.Middlewares;
 using Fiap.Cloud.Games.Core.Infra.Repositories.EF;
 using Fiap.Cloud.Games.Core.Application.Validations;
+using Sample.Utils.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,12 +42,8 @@ builder.WebHost.UseDefaultServiceProvider(options => options.ValidateScopes = fa
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI(c => c.RoutePrefix = "swagger");
 
 app.UseCustomExceptionHandler();
 app.UseMessageLogger();
