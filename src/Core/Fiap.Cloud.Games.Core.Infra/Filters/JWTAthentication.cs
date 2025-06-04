@@ -37,7 +37,7 @@ public static class JWTAthentication
         services.AddAuthorization(options =>
         {
             options.AddPolicy(AppConstants.Policies.ADMINISTRATOR, policy => policy.RequireRole(AppConstants.Roles.ADMINISTRATOR));
-            options.AddPolicy(AppConstants.Policies.ADMINISTRATOR, policy => policy.RequireRole(AppConstants.Roles.USER));
+            options.AddPolicy(AppConstants.Policies.USER, policy => policy.RequireRole(AppConstants.Roles.USER));
         });
     }
 
