@@ -6,11 +6,11 @@ namespace Fiap.Cloud.Games.Test;
 
 public abstract class GameTests
 {
-    public sealed class GameInsertValidationTests : GameTests
+    public sealed class InsertTests : GameTests
     {
         private readonly GameInsertValidation _validator;
 
-        public GameInsertValidationTests()
+        public InsertTests()
         {
             _validator = new GameInsertValidation();
         }
@@ -71,11 +71,11 @@ public abstract class GameTests
         }
     }
 
-    public sealed class GameUpdateValidationTests : GameTests
+    public sealed class UpdateTests : GameTests
     {
         private readonly GameUpdateValidation _validator;
 
-        public GameUpdateValidationTests()
+        public UpdateTests()
         {
             _validator = new GameUpdateValidation();
         }
