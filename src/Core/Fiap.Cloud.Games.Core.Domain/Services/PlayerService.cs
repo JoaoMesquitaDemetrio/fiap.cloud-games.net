@@ -38,7 +38,7 @@ public class PlayerService : BaseService, IPlayerService
         return result;
     }
 
-    private string HashPassword(string password)
+    public string HashPassword(string password)
     {
         var salt = RandomNumberGenerator.GetBytes(16);
         var hash = new Rfc2898DeriveBytes(password, salt, 100_000, HashAlgorithmName.SHA256);

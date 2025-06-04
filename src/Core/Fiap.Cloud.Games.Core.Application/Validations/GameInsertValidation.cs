@@ -9,6 +9,6 @@ public class GameInsertValidation : AbstractValidator<GameInsert>
     {
         RuleFor(x => x.Name).NotEmpty().MaximumLength(500).WithMessage("O Nome não pode ser vazio e deve ter no máximo 500 caracteres.");
         RuleFor(x => x.Studio).NotEmpty().MaximumLength(500).WithMessage("O Estúdio não pode ser vazio e deve ter no máximo 500 caracteres.");
-        RuleFor(x => x.Price).GreaterThanOrEqualTo(0).WithMessage("O Preço deve ser maior ou igual a zero.");
+        RuleFor(x => x.Price).GreaterThan(0).WithMessage("O Preço deve ser maior que a zero.");
     }
 }
