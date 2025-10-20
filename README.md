@@ -88,3 +88,8 @@ Criação do container do SQL Server:
 ```
 $ docker run --network fiap-cloud -e "ACCEPT_EULA=Y" -e 'MSSQL_SA_PASSWORD=@Abc1234' -p 1433:1433 --name sql-database -v sqlvolume -d mcr.microsoft.com/mssql/server:2022-latest 
 ```
+### Build da imagem do projeto
+Para criar a imagem do projeto, execute o comando abaixo na raiz do projeto:
+```
+docker build -t joaomesquitademetrio/fiap.cloud.games:latest -f src/ui/fiap.cloud.games.ui.api/Dockerfile .
+```
