@@ -27,7 +27,6 @@ jobs:
           - name: Build and push Docker images
             uses: docker/build-push-action@v6.18.0
             with:
-              context: ./src/ui/Fiap.Cloud.Games.UI.Api
+              context: src/ui/Fiap.Cloud.Games.UI.Api
               tags: 'latest'
               push: true
-          
