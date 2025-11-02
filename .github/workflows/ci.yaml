@@ -12,7 +12,7 @@ on :
 jobs:
     test_job:
         name: Execute test job
-        runs-on: ubuntu-hosted
+        runs-on: ubuntu-latest
 
         steps:
           - name: Checkout repository
@@ -23,4 +23,11 @@ jobs:
             with:
                 username: 'joaomesquitademetrio'
                 password: ${{ secrets.DOCKERHUB_PASS }}
+
+          - name: Build and push Docker images
+            uses: docker/build-push-action@v6.18.0
+            with:
+              context: ./src/ui/Fiap.Cloud.Games.UI.Api
+              tags: 'latest'
+              push: true
           
