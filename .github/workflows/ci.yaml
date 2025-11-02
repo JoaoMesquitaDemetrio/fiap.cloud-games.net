@@ -1,0 +1,21 @@
+name: CI workflow
+
+on :
+  push:
+    branches:
+      - master
+      
+  pull_request:
+    branches:
+      - master
+
+jobs:
+    test_job:
+        name: Execute test job
+        runs-on: self-hosted
+
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v2
+
+        
