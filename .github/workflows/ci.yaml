@@ -29,4 +29,4 @@ jobs:
           context: .
           file: ./src/UI/Fiap.Cloud.Games.UI.Api/Dockerfile
           push: true
-          tags: joaomesquitademetrio/games-ui:latest
+          tags: joaomesquitademetrio/fiap-cloud-games:latest
