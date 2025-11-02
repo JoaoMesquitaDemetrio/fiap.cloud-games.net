@@ -28,6 +28,6 @@ jobs:
             uses: docker/build-push-action@v6.18.0
             with:
               context: .
-              dockerfile: src/UI/Fiap.Cloud.Games.UI.Api/Dockerfile
+              file: ./src/UI/Fiap.Cloud.Games.UI.Api/Dockerfile
               tags: 'latest'
               push: true
