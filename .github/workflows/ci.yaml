@@ -23,4 +23,3 @@ jobs:
             with:
                 username: 'joaomesquitademetrio'
                 password: ${{ secrets.DOCKERHUB_PASS }}
-          
